@@ -1,0 +1,269 @@
+<!doctype html>
+
+<html ng-app="MainApp">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ABM</title>
+	<!-- Cargamos bootstrap -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<!-- Cargamos angular -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+	<!-- Cargamos el javascript de angular -->
+	<script src="core.js"></script>
+
+</head>
+<body ng-controller="mainController" data-spy="scroll" data-target=".navbar" data-offset="50">}
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+	<ul class="nav navbar-nav">
+		<li><a href="#abm_home">HOME</a></li>
+		<li><a href="#abm_clientes">ABM Cliente</a></li>
+		<li><a href="#abm_moviles">ABM Moviles</a></li>
+		<li><a href="#abm_tecnicos">ABM tecnicos</a></li>
+		<li><a href="#abm_OT">ABM OT</a></li>
+	</ul>
+	</nav>
+	
+	<div id="abm_home">
+	<hr size="30"></hr>
+	<h1 class="text-center">Total Clientes</h1>
+	<div class="container-fluid">		
+		<div class="row">
+			<div class="col-lg-12 well">
+				<form>
+					<table class="table table-striped">
+						<thead class="thead-dark">
+						<tr class="info">
+							<td>N° de Cliente</td>
+							<td>Nombre</td>
+							<td>Apellidos</td>
+							<td>Edad</td>
+							<td>DNI</td>
+							<td>Telefono</td>
+							<td>Provincia</td>
+							<td>Localidad</td>
+							<td>Calle</td>
+							<td>Numero</td>
+						</tr>
+						</thead>
+						<tr ng-repeat="persona in personas" ng-click="selectPerson(persona)">
+							<td>{{ persona.num_cliente }}</td>
+							<td>{{ persona.nombre }}</td>
+							<td>{{ persona.apellido }}</td>
+							<td>{{ persona.edad }}</td>
+							<td>{{ persona.dni }}</td>
+							<td>{{ persona.telefono }}</td>
+							<td>{{ persona.provincia }}</td>
+							<td>{{ persona.localidad }}</td>
+							<td>{{ persona.calle }}</td>
+							<td>{{ persona.numero }}</td>
+						</tr>
+					</table>
+				</form> 
+			</div>
+		</div>
+	</div>
+	</div>
+	
+	<div id="abm_clientes">
+	<hr></hr>
+	<h1 class="text-center">ABM Clientes</h1>
+	<div class="container-fluid">		
+		<div class="row">
+			<div class="col-lg-3 well">
+				<form>
+					<div class="col-lg-12">
+						<div class="row">
+							<div class="col-sm-12 form-group">
+								<label>Nº de Cliente</label>
+								<input type="text" class="form-control" placeholder="Numero Cliente" ng-model="newPersona.num_cliente" required>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-sm-6 form-group">
+								<label>Nombre</label>
+								<input type="text" class="form-control input-sm text-center" placeholder="Nombre" ng-model="newPersona.nombre" required>
+							</div>
+							<div class="col-sm-6 form-group">
+								<label>Apellido</label>
+								<input type="text" class="form-control input-sm text-center" placeholder="Apellido" ng-model="newPersona.apellido" required>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-sm-6 form-group">
+								<label>Edad</label>
+								<input type="text" class="form-control input-sm text-center" placeholder="Edad" ng-model="newPersona.edad" required>
+							</div>
+							<div class="col-sm-6 form-group">
+								<label>DNI</label>
+								<input type="text" class="form-control input-sm text-center" placeholder="DNI" ng-model="newPersona.dni" required>
+							</div>
+						</div>	
+						
+						<div class="row">
+							<div class="col-sm-12 form-group">
+								<label>Telefono</label>
+								<input type="text" class="form-control input-sm text-center" placeholder="Telefono" ng-model="newPersona.telefono" required>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-sm-12 form-group">
+								<label>Provincia</label>
+								<input type="text" class="form-control input-sm text-center" placeholder="Provincia" ng-model="newPersona.provincia" required>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-sm-12 form-group">
+								<label>Localidad</label>
+								<input type="text" class="form-control input-sm text-center" placeholder="Localidad" ng-model="newPersona.localidad" required>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-sm-12 form-group">
+								<label>Calle</label>
+								<input type="text" class="form-control input-sm text-center" placeholder="Calle" ng-model="newPersona.calle" required>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-sm-12 form-group">
+								<label>Altura</label>
+								<input type="text" class="form-control input-sm text-center" placeholder="Numero" ng-model="newPersona.numero" required>
+							</div>
+						</div>
+						
+						<!-- Acciones que podemos realizar en el formulario -->
+						<button type="submit" class="btn btn-success btn-sm" ng-click="registrarPersona()" ng-disabled="myForm.$invalid || selected">Registrar</button>
+					
+						<button type="submit" class="btn btn-warning btn-sm" ng-click="modificarPersona(newPersona)" ng-disabled="!newPersona.num_cliente || !newPersona.nombre || !newPersona.apellido || !newPersona.edad || !newPersona.dni || !newPersona.telefono || !newPersona.provincia || !newPersona.localidad || !newPersona.calle || !newPersona.numero || !selected">Modificar</button>
+					
+						<button type="submit" class="btn btn-danger btn-sm" ng-click="borrarPersona(newPersona)" ng-disabled="!newPersona.nombre || !newPersona.apellido || !newPersona.edad || !selected">Borrar</button>
+					</div>
+				</form> 
+			</div>
+			
+			<div class="col-lg-9 well">
+				<form>
+					<div class="col-lg-12">
+						<table class="table table-striped">
+						<thead class="thead-dark">
+						<tr class="info">
+							<td>N° de Cliente</td>
+							<td>Nombre</td>
+							<td>Apellidos</td>
+							<td>Edad</td>
+							<td>DNI</td>
+							<td>Telefono</td>
+							<td>Provincia</td>
+							<td>Localidad</td>
+							<td>Calle</td>
+							<td>Numero</td>
+						</tr>
+						</thead>
+						<tr ng-repeat="persona in personas" ng-click="selectPerson(persona)">
+							<td>{{ persona.num_cliente }}</td>
+							<td>{{ persona.nombre }}</td>
+							<td>{{ persona.apellido }}</td>
+							<td>{{ persona.edad }}</td>
+							<td>{{ persona.dni }}</td>
+							<td>{{ persona.telefono }}</td>
+							<td>{{ persona.provincia }}</td>
+							<td>{{ persona.localidad }}</td>
+							<td>{{ persona.calle }}</td>
+							<td>{{ persona.numero }}</td>
+						</tr>
+					</table>
+					</div>
+				</form> 
+			</div>
+			
+			
+		</div>
+				
+				
+				
+		</div>
+	</div>
+	
+	<div id="abm_moviles">
+	<hr size="30"></hr>
+	<h1 class="text-center">ABM Moviles</h1>
+	<div class="container-fluid">		
+		<div class="row">
+			<div class="col-lg-3 well">
+				<form>
+					<div class="col-lg-12">
+						<div class="row">
+							<div class="col-sm-12 form-group">
+								<label>ID Movil</label>
+								<input type="text" class="form-control" placeholder="Numero Cliente" ng-model="newMovil.id_movil" required>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-sm-6 form-group">
+								<label>Marca</label>
+								<input type="text" class="form-control input-sm text-center" placeholder="Marca" ng-model="newMovil.marca" required>
+							</div>
+							<div class="col-sm-6 form-group">
+								<label>Modelo</label>
+								<input type="text" class="form-control input-sm text-center" placeholder="Modelo" ng-model="newMovil.modelo" required>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-sm-6 form-group">
+								<label>Color</label>
+								<input type="text" class="form-control input-sm text-center" placeholder="Color" ng-model="newMovil.color" required>
+							</div>
+							<div class="col-sm-6 form-group">
+								<label>Matricula</label>
+								<input type="text" class="form-control input-sm text-center" placeholder="Matricula" ng-model="newMovil.matricula" required>
+							</div>
+						</div>	
+						
+						<!-- Acciones que podemos realizar en el formulario -->
+						<button type="submit" class="btn btn-success btn-sm" ng-click="registrarMovil()" ng-disabled="myForm.$invalid || selected">Registrar</button>
+					
+						<button type="submit" class="btn btn-warning btn-sm" ng-click="modificarMovil(newMovil)" ng-disabled="!newMovil.id_movil || !newMovil.marca || !newMovil.modelo || !newMovil.color || !newMovil.matricula|| !selected">Modificar</button>
+					
+						<button type="submit" class="btn btn-danger btn-sm" ng-click="borrarMovil(newMovil)" ng-disabled="!newMovil.marca || !newMovil.modelo || !newMovil.matricula || !selected">Borrar</button>
+					</div>
+				</form> 
+			</div>
+			
+			<div class="col-lg-9 well">
+				<form>
+					<div class="col-lg-12">
+						<table class="table table-striped">
+						<thead class="thead-dark">
+						<tr class="info">
+							<td>ID Movil</td>
+							<td>Modelo</td>
+							<td>Marca</td>
+							<td>Color</td>
+							<td>Matricula</td>
+						</tr>
+						</thead>
+						<tr ng-repeat="movil in moviles" ng-click="selectMovils(movil)">
+							<td>{{ movil.id_movil }}</td>
+							<td>{{ movil.modelo }}</td>
+							<td>{{ movil.marca }}</td>
+							<td>{{ movil.color }}</td>
+							<td>{{ movil.Matricula }}</td>
+						</tr>
+					</table>
+					</div>
+				</form> 
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

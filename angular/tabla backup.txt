@@ -1,0 +1,31 @@
+<div class="row">
+			<div class="col-sm-0 col-sm-offset-1">
+				<table class="table table-striped">
+					<tr class="info">
+						<td>Nº de Cliente</td>
+						<td>Nombre</td>
+						<td>Apellidos</td>
+						<td>Edad</td>
+						<td>DNI</td>
+						<td>Telefono</td>
+						<td>Provincia</td>
+						<td>Localidad</td>
+						<td>Calle</td>
+						<td>Numero</td>
+					</tr>
+					<tr ng-repeat="persona in personas" ng-click="selectPerson(persona)">
+						<td>{{ persona.num_cliente }}</td>
+						<td>{{ persona.nombre }}</td>
+						<td>{{ persona.apellido }}</td>
+						<td>{{ persona.edad }}</td>
+						<td>{{ persona.dni }}</td>
+						<td>{{ persona.telefono }}</td>
+						<td>{{ persona.provincia }}</td>
+						<td>{{ persona.localidad }}</td>
+						<td>{{ persona.calle }}</td>
+						<td>{{ persona.numero }}</td>
+					</tr>
+				</table>					
+			</div>
+			</div>
+		</div>

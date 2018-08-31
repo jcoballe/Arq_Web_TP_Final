@@ -1,0 +1,162 @@
+<!doctype html>
+
+<html ng-app="MainApp">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ABM</title>
+	<!-- Cargamos bootstrap -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<!-- Cargamos angular -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+	<!-- Cargamos el javascript de angular -->
+	<script src="core.js"></script>
+
+</head>
+<body ng-controller="mainController" data-spy="scroll" data-target=".navbar" data-offset="50">
+<!-- The navbar - The <a> elements are used to jump to a section in the scrollable area -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <ul class="nav navbar-nav">
+    <li><a href="#section1">ABM Cliente</a></li>
+	<li><a href="#section2">ABM Autos</a></li>
+</nav>
+<div class="row">
+    <div class="span6">
+        <form>[...]</form>
+    </div>
+    <div class="span6">
+        <form>[...]</form>
+    </div>
+</div>
+	<div class="container-fluid">		
+		<div class="container row">
+			<div class="col-lg-3 well">
+				<div class="row">
+				<div class="span6">
+					<form>
+						<div class="col-lg-12">
+						<!-- Section 1 -->
+						<div id="section1">
+						<h1>ABM Cliente</h1>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 form-group">
+								<label>Nº de Cliente</label>
+								<input type="text" class="form-control" placeholder="Numero Cliente" ng-model="newPersona.num_cliente" required>
+							</div>
+						</div>
+						
+						<div class="col-lg-12">
+						<!-- Section 1 -->
+						<div id="section2">
+						<h1>ABM Cliente</h1>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 form-group">
+								<label>Nº de Cliente</label>
+								<input type="text" class="form-control" placeholder="Numero Cliente" ng-model="newPersona.num_cliente" required>
+							</div>
+						</div>
+						
+						<!-- The scrollable area -->
+
+
+
+
+
+
+
+						
+						<button type="submit" class="btn btn-success btn-sm" ng-click="registrarPersona()" ng-disabled="myForm.$invalid || selected">Registrar</button>
+					
+						<button type="submit" class="btn btn-warning btn-sm" ng-click="modificarPersona(newPersona)" ng-disabled="!newPersona.num_cliente || !newPersona.nombre || !newPersona.apellido || !newPersona.edad || !newPersona.dni || !newPersona.telefono || !newPersona.provincia || !newPersona.localidad || !newPersona.calle || !newPersona.numero || !selected">Modificar</button>
+					
+						<button type="submit" class="btn btn-danger btn-sm" ng-click="borrarPersona(newPersona)" ng-disabled="!newPersona.nombre || !newPersona.apellido || !newPersona.edad || !selected">Borrar</button>
+					</div>
+				</form> 
+				</div>
+				<div class="span6">
+					<form>
+						<div class="col-lg-12">
+						
+						<div class="row">
+							<div class="col-sm-12 form-group">
+								<label>Nº de Cliente</label>
+								<input type="text" class="form-control" placeholder="Numero Cliente" ng-model="newPersona.num_cliente" required>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-sm-6 form-group">
+								<label>Nombre</label>
+								<input type="text" class="form-control input-sm text-center" placeholder="Nombre" ng-model="newPersona.nombre" required>
+							</div>
+							<div class="col-sm-6 form-group">
+								<label>Apellido</label>
+								<input type="text" class="form-control input-sm text-center" placeholder="Apellido" ng-model="newPersona.apellido" required>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-sm-6 form-group">
+								<label>Edad</label>
+								<input type="text" class="form-control input-sm text-center" placeholder="Edad" ng-model="newPersona.edad" required>
+							</div>
+							<div class="col-sm-6 form-group">
+								<label>DNI</label>
+								<input type="text" class="form-control input-sm text-center" placeholder="DNI" ng-model="newPersona.dni" required>
+							</div>
+						</div>	
+						
+						<div class="row">
+							<div class="col-sm-12 form-group">
+								<label>Telefono</label>
+								<input type="text" class="form-control input-sm text-center" placeholder="Telefono" ng-model="newPersona.telefono" required>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-sm-12 form-group">
+								<label>Provincia</label>
+								<input type="text" class="form-control input-sm text-center" placeholder="Provincia" ng-model="newPersona.provincia" required>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-sm-12 form-group">
+								<label>Localidad</label>
+								<input type="text" class="form-control input-sm text-center" placeholder="Localidad" ng-model="newPersona.localidad" required>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-sm-12 form-group">
+								<label>Calle</label>
+								<input type="text" class="form-control input-sm text-center" placeholder="Calle" ng-model="newPersona.calle" required>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-sm-12 form-group">
+								<label>Altura</label>
+								<input type="text" class="form-control input-sm text-center" placeholder="Numero" ng-model="newPersona.numero" required>
+							</div>
+						</div>
+						
+						<!-- Acciones que podemos realizar en el formulario -->
+						
+						<button type="submit" class="btn btn-success btn-sm" ng-click="registrarPersona()" ng-disabled="myForm.$invalid || selected">Registrar</button>
+					
+						<button type="submit" class="btn btn-warning btn-sm" ng-click="modificarPersona(newPersona)" ng-disabled="!newPersona.num_cliente || !newPersona.nombre || !newPersona.apellido || !newPersona.edad || !newPersona.dni || !newPersona.telefono || !newPersona.provincia || !newPersona.localidad || !newPersona.calle || !newPersona.numero || !selected">Modificar</button>
+					
+						<button type="submit" class="btn btn-danger btn-sm" ng-click="borrarPersona(newPersona)" ng-disabled="!newPersona.nombre || !newPersona.apellido || !newPersona.edad || !selected">Borrar</button>
+					</div>
+				</form> 
+				</div>
+				
+				
+				
+		</div>
+	</div>
+</body>
+</html>
